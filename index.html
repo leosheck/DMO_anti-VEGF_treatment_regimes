@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DMO Anti-VEGF Regimens</title>
+<meta name="description" content="Diabetic macular oedema: DRCR Retina Network modified PRN versus phase 3 dosing regimens, mean vision change and injection numbers at 1, 2, 3 and 4 to 5 years, with a PubMed source for every figure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0}
+img{max-width:100%}
+
+/* Layout: one reading column; chart panel with view tabs, then the full results table, then method notes. Brand: Leo Sheck tokens. */
+:root{
+  --bg:#F2F2F2; --surface:#FFFFFF; --surface-2:#F7F7F7; --ink:#030F26; --muted:#565E6E; --line:#E4E4E4; --grid:#EDEDED;
+  --accent:#030F26; --accent-soft:#E4E4E4; --accent-ink:#FFFFFF;
+  --good:#2F6B52; --warn:#94681C; --bad:#9C3A33;
+  --p1:#8C94A4; --p2:#4F5B75; --p3:#030F26;
+  --shadow:0 1px 2px rgba(3,15,38,.05),0 6px 20px rgba(3,15,38,.06);
+  --f-display:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --r:2px;
+  --d-ran:#2B67A8; --d-afl2:#C2571F; --d-afl8:#7E3B12; --d-bev:#2D7D52; --d-far:#7C46A6; --d-bro:#A9821A; --d-mix:#6E7685;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#030F26; --surface:#0A172E; --surface-2:#0E1C36; --ink:#F2F2F2; --muted:#A0A8B8; --line:#1E2B45; --grid:#14223B;
+  --accent:#E4E4E4; --accent-soft:#1A2843; --accent-ink:#030F26;
+  --good:#6FBE98; --warn:#D9A65A; --bad:#E58A80;
+  --p1:#56627C; --p2:#8F9BB4; --p3:#E4E4E4;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.3); --d-ran:#79AEEA; --d-afl2:#F2955A; --d-afl8:#F7C89A; --d-bev:#6CCB97; --d-far:#C69BEA; --d-bro:#E3C25A; --d-mix:#A0A8B8; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --d-ran:#79AEEA; --d-afl2:#F2955A; --d-afl8:#F7C89A; --d-bev:#6CCB97; --d-far:#C69BEA; --d-bro:#E3C25A; --d-mix:#A0A8B8;
+  --bg:#030F26; --surface:#0A172E; --surface-2:#0E1C36; --ink:#F2F2F2; --muted:#A0A8B8; --line:#1E2B45; --grid:#14223B;
+  --accent:#E4E4E4; --accent-soft:#1A2843; --accent-ink:#030F26;
+  --good:#6FBE98; --warn:#D9A65A; --bad:#E58A80;
+  --p1:#56627C; --p2:#8F9BB4; --p3:#E4E4E4;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.3); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:22px 48px;display:flex;flex-direction:column;gap:28px}
+@media (max-width:520px){.wrap{padding-inline:16px}}
+.brandbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.brandbar a{color:var(--ink);display:block;line-height:0}
+.brandbar svg{height:13px;width:auto;display:block}
+.brandbar span{font:500 .66rem/1.2 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+h1{font:300 1.6rem/1.25 var(--f-display);letter-spacing:.14em;text-transform:uppercase;margin:0;text-wrap:balance}
+h2{font:300 1.05rem/1.3 var(--f-display);letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px;text-wrap:balance}
+h3{font:600 .95rem/1.35 var(--f-body);margin:0 0 4px}
+p{margin:0}
+.lede{max-width:70ch;color:var(--muted);margin-top:10px}
+.lede b{color:var(--ink);font-weight:500}
+.eyebrow{font:500 .68rem/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+a{color:inherit;text-underline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* Strategy key */
+.strats{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.strat{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.strat .hd{display:flex;align-items:center;gap:10px}
+.strat svg{flex:none}
+.strat p{font-size:.86rem;color:var(--muted)}
+.strat .who{font:400 .74rem/1.4 var(--f-mono);color:var(--muted)}
+
+/* Panel */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.controls{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.seg button{font:500 .78rem/1 var(--f-body);letter-spacing:.04em;background:var(--surface);color:var(--muted);border:0;border-right:1px solid var(--line);padding:9px 12px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.ctl-label{font:500 .66rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:7px;font:500 .76rem/1 var(--f-body);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);padding:7px 10px;cursor:pointer}
+.chips.some .chip[aria-pressed="false"]{color:var(--muted);opacity:.55}
+.chips.some .chip[aria-pressed="false"] svg{opacity:.4}
+.chips.some .chip[aria-pressed="true"]{border-color:var(--ink);background:var(--accent-soft)}
+.chip.reset{border-style:dashed}
+.chartbox{position:relative;overflow-x:auto}
+#chart{display:block;width:100%;min-width:620px;height:auto}
+#chart text{font-family:var(--f-body)}
+.axis-label{fill:var(--muted);font-size:11px}
+.tick{fill:var(--muted);font-size:10.5px;font-family:var(--f-mono)}
+.mk{cursor:pointer}
+.mk:focus{outline:none}
+.mk:focus-visible .shape{stroke-width:2.6}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font:400 .78rem/1.4 var(--f-body);padding:8px 10px;border-radius:var(--r);max-width:280px;box-shadow:var(--shadow);z-index:3}
+.tip b{font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.78rem;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.note{font-size:.8rem;color:var(--muted);max-width:90ch}
+
+/* Detail */
+.detail{border-top:1px solid var(--line);padding-top:14px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px}
+@media (max-width:760px){.detail{grid-template-columns:1fr}}
+.detail .regimen{font-size:.88rem;color:var(--muted);margin-top:4px}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.86rem;align-content:start}
+.dl dt{font:500 .7rem/1.6 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dl dd{margin:0;font-variant-numeric:tabular-nums}
+.placeholder{color:var(--muted);font-size:.88rem}
+
+/* Table */
+.tablewrap{overflow:auto;max-height:min(80vh,820px);border:1px solid var(--line);background:var(--surface);overscroll-behavior:contain}
+table{border-collapse:collapse;width:100%;min-width:900px;font-size:.84rem;table-layout:fixed}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{font:500 .66rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--surface-2);position:sticky;top:0;z-index:2;box-shadow:inset 0 -1px 0 var(--line)}
+tbody tr.grp td{background:var(--surface-2);padding:0}
+.grp-btn{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:10px 10px 9px;cursor:pointer;font:500 .7rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.grp-btn:hover{background:var(--accent-soft)}
+.grp-btn:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.grp-btn .caret{display:inline-block;width:10px;transition:transform .15s}
+.grp-btn[aria-expanded="false"] .caret{transform:rotate(-90deg)}
+.grp-btn .cnt{color:var(--muted);letter-spacing:.06em;text-transform:none;font-family:var(--f-body);font-weight:400}
+.tbl-tools{display:flex;gap:6px;margin-bottom:10px}
+tbody tr.arm{cursor:pointer}
+tbody tr.arm:hover td{background:var(--surface-2)}
+tbody tr.arm.sel td{background:var(--accent-soft)}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.va{font-weight:600}
+.inj{color:var(--muted);display:block;font-size:.78rem}
+.inj.sched{font-style:italic}
+.na{color:var(--muted)}
+sup a{font:500 .66rem/1 var(--f-mono);text-decoration:none;color:var(--muted);margin-left:1px}
+sup a:hover{color:var(--ink);text-decoration:underline}
+.arm-name{font-weight:500}
+.arm-sub{display:block;color:var(--muted);font-size:.76rem}
+.flag{display:inline-block;font:500 .62rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:3px 5px;border-radius:var(--r);color:var(--muted);margin-left:4px;vertical-align:1px}
+
+/* Notes grid */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.cols > *{min-width:0}
+ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px;font-size:.88rem}
+.mini{border-collapse:collapse;width:100%;font-size:.84rem;min-width:0}
+.mini th,.mini td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+.mini td{font-variant-numeric:tabular-nums}
+ol.src{margin:0;padding-left:22px;font-size:.8rem;color:var(--muted);columns:320px 2;column-gap:40px}
+ol.src li{padding-left:2px;margin-bottom:5px;break-inside:avoid}
+ol.src a{color:var(--ink)}
+footer{font-size:.76rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:no-preference){.mk .shape{transition:opacity .15s}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="brandbar"><a href="https://leosheck.co.nz" target="_blank" rel="noopener"><svg role="img" aria-label="Leo Sheck" xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 866 80"><path fill="currentColor" fill-rule="nonzero" d="M 229.09 -0.29 C 210.42 -0.29 195.29 13.21 195.29 29.86 C 195.29 33.05 195.86 36.11 196.88 39 C 201.23 26.82 214 14.82 229.09 14.82 C 244.18 14.82 256.95 26.82 261.3 39 C 262.32 36.11 262.89 33.05 262.89 29.86 C 262.89 13.21 247.75 -0.29 229.09 -0.29 M 229.09 63.18 C 214 63.18 201.23 51.18 196.88 39 C 195.86 41.88 195.29 44.95 195.29 48.14 C 195.29 64.79 210.42 78.29 229.09 78.29 C 247.75 78.29 262.89 64.79 262.89 48.14 C 262.89 44.95 262.32 41.88 261.3 39 C 256.95 51.18 244.18 63.18 229.09 63.18 M 97.5 76.62 L 148.43 76.62 L 148.43 64.88 L 110.71 64.88 L 110.71 43.71 L 142.46 43.71 L 142.46 31.98 L 110.71 31.98 L 110.71 13.12 L 148.43 13.12 L 148.43 1.38 L 97.5 1.38 Z M 13.59 1.38 L 0.18 1.38 L 0.18 76.62 L 49.01 76.62 L 49.01 64.88 L 13.59 64.88 Z M 401.32 31.98 C 391.15 29.68 385.39 28.31 385.39 21.71 C 385.39 15.74 390.95 11.65 399.01 11.65 C 407.81 11.65 413.37 16.16 417.56 22.65 L 427.41 14.17 C 422.38 6.31 412.32 0.23 399.43 0.23 C 384.24 0.23 372.29 9.14 372.29 23.07 C 372.29 37.74 384.45 41.09 395.77 43.82 C 406.98 46.54 414.83 47.59 414.83 55.24 C 414.83 62.47 408.44 66.35 399.95 66.35 C 391.36 66.35 383.5 61.63 378.27 53.46 L 368 61.95 C 373.87 71.59 386.65 77.77 399.54 77.77 C 415.04 77.77 428.04 68.65 428.04 53.88 C 428.04 37.54 413.47 34.7 401.32 31.98 M 526.72 31.98 L 490.68 31.98 L 490.68 1.38 L 477.27 1.38 L 477.27 76.62 L 490.68 76.62 L 490.68 43.71 L 526.72 43.71 L 526.72 76.62 L 540.13 76.62 L 540.13 1.38 L 526.72 1.38 Z M 835.55 33.97 L 864.79 1.38 L 848.96 1.38 L 817.74 37.01 L 817.74 1.38 L 804.33 1.38 L 804.33 76.62 L 817.74 76.62 L 817.74 53.88 L 826.86 43.82 L 850.64 76.62 L 866.46 76.62 Z M 725.34 12.07 C 734.14 12.07 740.54 17.41 742.84 26.22 L 755.41 21.92 C 751.02 8.61 740.54 0.23 725.34 0.23 C 705.33 0.23 690.77 16.16 690.77 39 C 690.77 61.84 705.33 77.77 725.34 77.77 C 740.54 77.77 751.02 69.39 755.41 56.08 L 742.84 51.78 C 740.54 60.58 734.14 65.93 725.34 65.93 C 712.98 65.93 704.18 55.24 704.18 39 C 704.18 22.76 712.98 12.07 725.34 12.07 M 594.18 76.62 L 645.1 76.62 L 645.1 64.88 L 607.38 64.88 L 607.38 43.71 L 639.13 43.71 L 639.13 31.98 L 607.38 31.98 L 607.38 13.12 L 645.1 13.12 L 645.1 1.38 L 594.18 1.38 Z M 594.18 76.62"/></svg></a><span>Retina Specialists, Auckland</span></div>
+
+  <header>
+    <div class="eyebrow">Diabetic macular oedema · anti-VEGF dosing</div>
+    <h1 style="margin-top:8px">DMO Anti-VEGF Regimens</h1>
+    <p class="lede">How the <b>DRCR Retina Network modified PRN algorithm</b> compares with the <b>dosing regimens of the phase 3 registration trials</b>: mean change in best-corrected visual acuity (ETDRS letters) against the number of injections given, at 1 and 2 years, and at 3 and 4 to 5 years where follow-up exists. Select a mark or a table row for the regimen detail and its sources.</p>
+  </header>
+
+  <section aria-labelledby="h-strat">
+    <h2 id="h-strat">Six dosing strategies</h2>
+    <div class="strats" id="strats"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-chart">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline">
+      <h2 id="h-chart" style="margin:0">Vision gained against injections given</h2>
+      <span class="eyebrow" id="chart-sub"></span>
+    </div>
+    <div class="controls">
+      <div><span class="ctl-label">View</span><span class="seg" id="viewSeg">
+        <button type="button" id="v-scatter" data-v="scatter" aria-pressed="true">Vision vs injections</button>
+        <button type="button" id="v-lines" data-v="lines" aria-pressed="false">Vision over time</button>
+      </span></div>
+      <div id="timeCtl"><span class="ctl-label">Time point</span><span class="seg" id="timeSeg"></span></div>
+      <button type="button" class="chip" id="ncToggle" aria-pressed="false"></button>
+    </div>
+    <div class="controls"><span class="ctl-label">Drugs</span><div class="chips" id="drugChips"></div></div>
+    <div class="controls"><span class="ctl-label">Strategies</span><div class="chips" id="chips"></div></div>
+    <div class="chartbox" id="chartbox">
+      <svg id="chart" viewBox="0 0 900 460" role="img" aria-label="Chart of mean visual acuity change by regimen"></svg>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <div class="legend" id="legend"></div>
+    <p class="note" id="chartNote"></p>
+    <div class="detail" id="detail">
+      <div class="placeholder">Select a mark or a table row to see the regimen, the trial population and the sources.</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-table">
+    <h2 id="h-table">All arms and time points</h2>
+    <p class="note" style="margin-bottom:10px">The drug and strategy buttons above the chart also filter this table. Each cell gives mean change in visual acuity from baseline in ETDRS letters, then the injection count from baseline to that time point. Italic counts are scheduled by protocol rather than observed. Numbers in superscript link to the sources listed at the foot of the page.</p>
+    <div class="tbl-tools"><button type="button" class="chip" id="expandAll">Expand all</button><button type="button" class="chip" id="collapseAll">Collapse all</button></div>
+    <div class="tablewrap"><table id="tbl">
+      <colgroup><col style="width:23%"><col style="width:13%"><col style="width:10.5%"><col style="width:10.5%"><col style="width:10.5%"><col style="width:10.5%"><col style="width:22%"></colgroup>
+      <thead><tr><th>Arm</th><th>Drug</th><th class="num">1 year</th><th class="num">2 years</th><th class="num">3 years</th><th class="num">4–5 years</th><th>Notes</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section class="cols" aria-label="Interpretation">
+    <div class="panel">
+      <h2>What the comparison shows</h2>
+      <ul class="plain">
+        <li>At 1 year, the DRCR modified PRN arms gave 9 to 13 letters with a median of 8 to 10 injections. Fixed monthly dosing gave 10.5 to 12.5 letters with 13 scheduled injections. Fixed 8-weekly dosing after loading gave 9.2 to 11.8 letters, with 9 scheduled injections in VIVID and VISTA.</li>
+        <li>In year 2 the PRN algorithm needed few injections: a median of 5 to 6 in Protocol T and 2 to 3 in Protocol I. Its 2-year totals (median 15 to 16 in Protocol T) match fixed 8-weekly aflibercept (15 scheduled) and are well below fixed monthly dosing (24 to 25 scheduled).</li>
+        <li>The PRN algorithm requires a visit every 4 weeks in year 1. In Protocol I year 2, the median was 7 to 10 visits. Treat-and-extend reduces visits, not necessarily injections: in RETAIN it needed slightly more injections than PRN (12.4 to 12.8 against 10.7) with 46% fewer clinic visits.</li>
+        <li>The fewest injections over 2 years came from extended intervals: aflibercept 8 mg every 12 or 16 weeks (mean 9.5 and 7.8 through week 96) and faricimab treat-and-extend (median 11), each with vision gains similar to their aflibercept 2 mg comparator in the same trial.</li>
+        <li>After structured treatment stops, vision drifts down. Protocol T eyes lost 4.7 letters between years 2 and 5 under usual care, with a median of only 4 injections in those 3 years. Protocol I eyes, still on the PRN algorithm, held their gains to 5 years with little treatment after year 3.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>Read across trials with care</h2>
+      <ul class="plain">
+        <li>Entry vision differs. Protocol I and T took 20/32 to 20/320; Protocol AC took 20/50 to 20/320 only; RISE and RIDE took 20/40 to 20/320. In Protocol T, eyes starting at 20/50 or worse gained about twice as much as eyes starting at 20/32 to 20/40.</li>
+        <li>Injection counts are reported in different ways: medians in DRCR papers, means in industry papers, and only the protocol schedule in VIVID, VISTA, RISE and RIDE. Scheduled counts slightly overstate what patients actually received.</li>
+        <li>RESTORE reports only the mean average change over months 1 to 12, which runs lower than the change at month 12. RETAIN month-12 values are shown.</li>
+        <li>Laser was allowed in most trials. Protocol T added laser after 6 months for persistent oedema in 41% to 64% of eyes.</li>
+        <li>Extension studies (Protocol T 5-year, RHONE-X) include only patients who returned, and RHONE-X moved all arms to faricimab treat-and-extend.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-violet">
+    <h2 id="h-violet">After the first year: VIOLET</h2>
+    <p class="note" style="color:var(--ink)">VIOLET randomised 458 patients who had already received at least 1 year of aflibercept 2 mg to three maintenance strategies for 100 weeks. Vision was stable in all three (baseline here is the start of VIOLET, not the start of treatment), so the regimens differ mainly in workload.<sup><a href="#src-VIO">VIO</a></sup></p>
+    <div style="overflow-x:auto"><table class="mini" style="min-width:420px">
+      <thead><tr><th>Regimen</th><th>Change at week 52</th><th>Injections over 100 weeks</th><th>Clinic visits over 100 weeks</th></tr></thead>
+      <tbody>
+        <tr><td>Treat-and-extend</td><td>+0.5 letters</td><td>10.0 (mean)</td><td>13.3</td></tr>
+        <tr><td>As needed (PRN)</td><td>+1.7 letters</td><td>11.5 (mean)</td><td>25.0</td></tr>
+        <tr><td>Fixed every 8 weeks</td><td>+0.4 letters</td><td>12.3 (mean)</td><td>16.1</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-src">
+    <h2 id="h-src">Sources</h2>
+    <p class="note" style="margin-bottom:10px">All figures are taken from the PubMed abstract or the open-access full text of the cited paper, except where a note says otherwise. Each source opens on PubMed; the DOI link opens the publisher's page.</p>
+    <ol class="src" id="srcList"></ol>
+  </section>
+
+  <footer>Compiled for Leo Sheck, Retina Specialists, Auckland. Figures as of 2 October 2026, from articles indexed in PubMed. Cross-trial comparisons are descriptive and are not adjusted for differences in trial populations.</footer>
+</div>
+
+<script>
+const S = {
+  I10:{p:"20427088",d:"10.1016/j.ophtha.2010.02.031",c:"DRCR.net. Randomized trial evaluating ranibizumab plus prompt or deferred laser or triamcinolone plus prompt laser for DME. Ophthalmology 2010 (Protocol I, 1 year; injection counts from full text)"},
+  I11:{p:"21459214",d:"10.1016/j.ophtha.2010.12.033",c:"DRCR.net. Expanded 2-year follow-up of ranibizumab plus prompt or deferred laser. Ophthalmology 2011 (Protocol I, 2 years)"},
+  I12:{p:"22999634",d:"10.1016/j.ophtha.2012.08.022",c:"Elman MJ et al. Ranibizumab for DME with prompt versus deferred laser: three-year results. Ophthalmology 2012 (Protocol I, 3 years)"},
+  I15:{p:"25439614",d:"10.1016/j.ophtha.2014.08.047",c:"Elman MJ et al. Ranibizumab for DME with prompt versus deferred laser: 5-year results. Ophthalmology 2015 (Protocol I, 5 years)"},
+  T15:{p:"25692915",d:"10.1056/NEJMoa1414264",c:"Wells JA et al. Aflibercept, bevacizumab, or ranibizumab for DME. N Engl J Med 2015 (Protocol T, 1 year; injection counts from full text)"},
+  T16:{p:"26935357",d:"10.1016/j.ophtha.2016.02.022",c:"Wells JA et al. Two-year results from a comparative effectiveness trial. Ophthalmology 2016 (Protocol T, 2 years)"},
+  T20:{p:"32402554",d:"10.1016/j.ophtha.2020.03.021",c:"Glassman AR et al. Five-year outcomes (Protocol T Extension Study). Ophthalmology 2020"},
+  AC:{p:"35833805",d:"10.1056/NEJMoa2204225",c:"Jhaveri CD et al. Aflibercept monotherapy or bevacizumab first for DME. N Engl J Med 2022 (Protocol AC; injection and visit numbers from the open-access manuscript)"},
+  RR:{p:"22330964",d:"10.1016/j.ophtha.2011.12.039",c:"Nguyen QD et al. Ranibizumab for DME: results from RISE and RIDE. Ophthalmology 2012"},
+  RES:{p:"21459215",d:"10.1016/j.ophtha.2011.01.031",c:"Mitchell P et al. The RESTORE study. Ophthalmology 2011"},
+  RET:{p:"26453639",d:"10.1136/bjophthalmol-2015-307249",c:"Prünte C et al. Ranibizumab treat-and-extend for DMO: the RETAIN study. Br J Ophthalmol 2016 (month-12 values and injection medians from full text)"},
+  TREX:{p:"32303499",d:"10.1136/bjophthalmol-2020-316176",c:"Payne JF et al. Treat-and-extend ranibizumab with and without navigated laser: TREX-DME 3-year results. Br J Ophthalmol 2020"},
+  VV1:{p:"25012934",d:"10.1016/j.ophtha.2014.05.006",c:"Korobelnik JF et al. Intravitreal aflibercept for DME (VIVID and VISTA, 52 weeks). Ophthalmology 2014"},
+  VV2:{p:"26198808",d:"10.1016/j.ophtha.2015.06.017",c:"Brown DM et al. VISTA and VIVID 100-week results. Ophthalmology 2015"},
+  VV3:{p:"27651226",d:"10.1016/j.ophtha.2016.07.032",c:"Heier JS et al. VISTA and VIVID 148-week results. Ophthalmology 2016"},
+  YR1:{p:"35085503",d:"10.1016/S0140-6736(22)00018-6",c:"Wykoff CC et al. Faricimab in DMO (YOSEMITE and RHINE), 1-year results. Lancet 2022"},
+  YR2:{p:"39083147",d:"10.1007/s10384-024-01078-y",c:"Shimura M et al. Faricimab 2-year results, YOSEMITE Japan subgroup, reporting pooled YOSEMITE/RHINE 2-year figures. Jpn J Ophthalmol 2024 (full text)"},
+  RX:{p:"41534798",d:"10.1016/j.ophtha.2026.01.001",c:"Sheth VS et al. Four-year outcomes of faricimab in DME: RHONE-X extension. Ophthalmology 2026"},
+  PH1:{p:"38461843",d:"10.1016/S0140-6736(23)02577-1",c:"Brown DM et al. Aflibercept 8 mg in DMO (PHOTON), 48-week results. Lancet 2024"},
+  PH2:{p:"41223900",d:"10.1016/j.ophtha.2025.10.028",c:"Do DV et al. Aflibercept 8 mg for DME: 96-week PHOTON results. Ophthalmology 2025"},
+  KK1:{p:"35038415",d:"10.1016/j.ajo.2022.01.004",c:"Brown DM et al. KESTREL and KITE 52-week results (brolucizumab). Am J Ophthalmol 2022"},
+  KK2:{p:"37460036",d:"10.1016/j.ajo.2023.07.012",c:"Wykoff CC et al. KESTREL and KITE 100-week results. Am J Ophthalmol 2023"},
+  PHJ:{p:"41452566",d:"10.1007/s10384-025-01271-7",c:"Suzuma K et al. Aflibercept 8 mg in patients from Japan with DME: 48-week PHOTON subgroup analysis, reporting injection numbers for the Japan and non-Japan subgroups. Jpn J Ophthalmol 2025 (full text)"},
+  NMA:{p:"41902887",d:"10.1007/s12325-026-03553-z",c:"Cortesi PA et al. Aflibercept 8 mg for DME in Italy: cost-minimisation analysis with network meta-analysis of 2-year trials (pooled injection estimates). Adv Ther 2026 (full text)"},
+  VIO:{p:"35412227",d:"10.1007/s12325-022-02119-z",c:"Garweg JG et al. Aflibercept regimens beyond the first year: VIOLET. Adv Ther 2022"}
+};
+const SRC_ORDER = Object.keys(S);
+const srcNum = k => SRC_ORDER.indexOf(k) + 1;
+
+const STRATS = [
+  {k:"prn", name:"DRCR modified PRN", shape:"circle",
+   text:"Monthly injections until vision and OCT thickness stop improving or the retina is dry, then held; restarted when oedema worsens. Visits every 4 weeks in year 1, extended up to every 4 months when stable.",
+   who:"Protocols I, T, AC"},
+  {k:"ind", name:"Industry PRN, monthly visits", shape:"square",
+   text:"Three or more monthly loading doses, then injection only when vision is unstable because of oedema, with scheduled monthly review.",
+   who:"RESTORE, RETAIN PRN arm"},
+  {k:"monthly", name:"Fixed monthly", shape:"triangle",
+   text:"An injection every 4 weeks regardless of activity. The registration benchmark for ranibizumab and for aflibercept 2q4.",
+   who:"RISE, RIDE, VIVID, VISTA, TREX-DME"},
+  {k:"q8", name:"Fixed every 8 weeks after loading", shape:"diamond",
+   text:"Five monthly loading doses, then every 8 weeks with sham or no visits in between. The labelled aflibercept 2 mg regimen.",
+   who:"VIVID, VISTA, YOSEMITE, RHINE, PHOTON, KESTREL, KITE"},
+  {k:"te", name:"Treat-and-extend or personalised interval", shape:"tri-down",
+   text:"Inject at every visit. Extend the interval when dry and stable, shorten it when active. Faricimab's personalised treatment interval runs from 4 to 16 weeks.",
+   who:"RETAIN, TREX-DME, YOSEMITE, RHINE, RHONE-X"},
+  {k:"ext", name:"Long fixed interval, shortened if active", shape:"square-rot",
+   text:"Loading doses, then a long fixed interval (12 or 16 weeks), shortened only when protocol activity criteria are met.",
+   who:"PHOTON 8 mg, KESTREL and KITE brolucizumab"}
+];
+const SK = Object.fromEntries(STRATS.map(s=>[s.k,s]));
+
+/* Point: t (1,2,3,5), va, inj, kind ('med'|'mean'|'sched'|null), src [], sub (trial label), vn (vision note), inote (injection note) */
+const ARMS = [
+  {id:"i-def", trial:"Protocol I", arm:"Ranibizumab 0.5 mg + deferred laser", drug:"Ranibizumab 0.5 mg", s:"prn",
+   regimen:"Monthly for 12 weeks, then DRCR retreatment algorithm (success criteria from week 16). Focal or grid laser deferred for at least 24 weeks; 56% never had laser by 5 years.",
+   pop:"854 eyes randomised across 4 arms; vision 20/32 to 20/320; centre-involving DMO.",
+   note:"Investigator-led, NIH funded.",
+   pts:[{t:1,va:9,inj:9,kind:"med",src:["I10"]},
+        {t:2,va:null,inj:13,kind:"med",src:["I10","I11"],vn:"The 2-year abstract reports only the difference from laser alone (+5.8 letters).",inote:"Eyes with 2-year follow-up; median 3 in year 2."},
+        {t:3,va:9.7,inj:15,kind:"med",src:["I12"]},
+        {t:5,va:9.8,inj:17,kind:"med",src:["I15"],inote:"52% had no injection in year 5."}]},
+  {id:"i-pr", trial:"Protocol I", arm:"Ranibizumab 0.5 mg + prompt laser", drug:"Ranibizumab 0.5 mg", s:"prn",
+   regimen:"Same DRCR injection algorithm, with focal or grid laser 3 to 10 days after the first injection.",
+   pop:"As above.", note:"Prompt laser did not reduce injections enough to offset a smaller vision gain.",
+   pts:[{t:1,va:9,inj:8,kind:"med",src:["I10"]},
+        {t:2,va:null,inj:11,kind:"med",src:["I10","I11"],vn:"The 2-year abstract reports only the difference from laser alone (+3.7 letters).",inote:"Eyes with 2-year follow-up; median 2 in year 2."},
+        {t:3,va:6.8,inj:12,kind:"med",src:["I12"]},
+        {t:5,va:7.2,inj:13,kind:"med",src:["I15"],inote:"62% had no injection in year 5."}]},
+  {id:"t-afl", trial:"Protocol T", arm:"Aflibercept 2 mg", drug:"Aflibercept 2 mg", s:"prn",
+   regimen:"DRCR algorithm: monthly until stable, held after two injections without improvement or worsening, restarted on worsening. Laser added after 6 months for persistent oedema (41%).",
+   pop:"660 adults; vision 20/32 to 20/320. Starting at 20/50 or worse: +18.9 letters at 1 year and +18.1 at 2 years.",
+   note:"Best 1-year gain when starting vision was 20/50 or worse.",
+   pts:[{t:1,va:13.3,inj:9,kind:"med",src:["T15"]},
+        {t:2,va:12.8,inj:15,kind:"med",src:["T16"],inote:"Median 5 in year 2."}]},
+  {id:"t-bev", trial:"Protocol T", arm:"Bevacizumab 1.25 mg", drug:"Bevacizumab 1.25 mg", s:"prn",
+   regimen:"Same DRCR algorithm. Laser added in 64%.", pop:"As above. Starting at 20/50 or worse: +11.8 letters at 1 year and +13.3 at 2 years.", note:"",
+   pts:[{t:1,va:9.7,inj:10,kind:"med",src:["T15"]},
+        {t:2,va:10.0,inj:16,kind:"med",src:["T16"],inote:"Median 6 in year 2."}]},
+  {id:"t-ran", trial:"Protocol T", arm:"Ranibizumab 0.3 mg", drug:"Ranibizumab 0.3 mg", s:"prn",
+   regimen:"Same DRCR algorithm. Laser added in 52%.", pop:"As above. Starting at 20/50 or worse: +14.2 letters at 1 year and +16.1 at 2 years.", note:"",
+   pts:[{t:1,va:11.2,inj:10,kind:"med",src:["T15"]},
+        {t:2,va:12.3,inj:15,kind:"med",src:["T16"],inote:"Median 6 in year 2."}]},
+  {id:"t-ext", trial:"Protocol T extension", arm:"All three arms, years 2 to 5 under usual care", drug:"Any anti-VEGF", s:"prn",
+   regimen:"Protocol treatment for 2 years, then management at the treating clinician's discretion until a 5-year recall visit.",
+   pop:"317 of 463 eligible participants (68%) attended at 5 years.",
+   note:"Lost 4.7 letters between years 2 and 5.",
+   pts:[{t:5,va:7.4,inj:null,kind:null,src:["T20"],inote:"Median 4 injections in years 2 to 5 (32% had none), after a median of 15 to 16 in years 1 to 2. A cumulative total is not reported."}]},
+  {id:"ac-afl", trial:"Protocol AC", arm:"Aflibercept monotherapy", drug:"Aflibercept 2 mg", s:"prn",
+   regimen:"Six monthly injections unless success criteria were met from month 4, then DRCR deferral algorithm from week 24.",
+   pop:"312 eyes; vision 20/50 to 20/320 only, which explains the larger gains.",
+   note:"Primary outcome was the time-averaged change over 2 years.",
+   pts:[{t:2,va:15.0,inj:14.6,kind:"mean",src:["AC"],vn:"Mean improvement over the 2-year trial.",inote:"Mean 22.0 clinic visits over 2 years."}]},
+  {id:"ac-bev", trial:"Protocol AC", arm:"Bevacizumab first, switch to aflibercept", drug:"Bevacizumab, then aflibercept", s:"prn",
+   regimen:"Bevacizumab by the same algorithm; switched to aflibercept from week 12 if oedema persisted without improvement and vision was suboptimal. 70% switched within 2 years.",
+   pop:"As above.", note:"No significant difference in vision from aflibercept alone.",
+   pts:[{t:2,va:14.0,inj:16.1,kind:"mean",src:["AC"],vn:"Mean improvement over the 2-year trial.",inote:"Mean 9.2 bevacizumab plus 6.9 aflibercept injections; mean 22.5 clinic visits over 2 years."}]},
+
+  {id:"restore", trial:"RESTORE", arm:"Ranibizumab 0.5 mg monotherapy", drug:"Ranibizumab 0.5 mg", s:"ind",
+   regimen:"Three monthly loading doses, then PRN with monthly visits; treated until vision stable over 3 visits.",
+   pop:"345 patients with visual impairment from DMO.",
+   note:"European registration trial; laser control arm.",
+   pts:[{t:1,va:6.1,inj:7,kind:"mean",src:["RES"],vn:"Mean average change over months 1 to 12, not the change at month 12.",inote:"About 7 (mean)."}]},
+  {id:"ret-prn", trial:"RETAIN", arm:"Ranibizumab 0.5 mg PRN", drug:"Ranibizumab 0.5 mg", s:"ind",
+   regimen:"Monthly until vision stable, then PRN with monthly visits.", pop:"372 patients randomised 1:1:1.", note:"Control arm for treat-and-extend.",
+   pts:[{t:1,va:7.4,inj:7,kind:"med",src:["RET"],vn:"Change at month 12. The primary outcome, the average over months 1 to 12, was +6.2."},
+        {t:2,va:8.1,inj:10.7,kind:"mean",src:["RET"],inote:"Median 10. Mean 16.6 visits scheduled for treatment after stabilisation."}]},
+
+  {id:"rise", trial:"RISE", arm:"Ranibizumab 0.5 mg monthly", drug:"Ranibizumab 0.5 mg", s:"monthly",
+   regimen:"Monthly injections for 24 months; macular laser available from month 3.", pop:"377 patients; vision 20/40 to 20/320; central thickness 275 µm or more.",
+   note:"US registration trial.",
+   pts:[{t:2,va:11.9,inj:24,kind:"sched",src:["RR"],vn:"Mean change taken from the paper's results; the abstract reports the share gaining 15 letters (39.2%).",inote:"Scheduled monthly doses over 24 months."}]},
+  {id:"ride", trial:"RIDE", arm:"Ranibizumab 0.5 mg monthly", drug:"Ranibizumab 0.5 mg", s:"monthly",
+   regimen:"As RISE.", pop:"382 patients.", note:"",
+   pts:[{t:2,va:12.0,inj:24,kind:"sched",src:["RR"],vn:"Mean change taken from the paper's results; the abstract reports the share gaining 15 letters (45.7%).",inote:"Scheduled monthly doses over 24 months."}]},
+  {id:"vista4", trial:"VISTA", arm:"Aflibercept 2 mg every 4 weeks", drug:"Aflibercept 2 mg", s:"monthly",
+   regimen:"Every 4 weeks throughout; laser rescue from week 24 if criteria met.", pop:"VISTA and VIVID: 872 eyes in total.", note:"",
+   pts:[{t:1,va:12.5,inj:13,kind:"sched",src:["VV1"]},{t:2,va:11.5,inj:25,kind:"sched",src:["VV2"]},{t:3,va:10.4,inj:37,kind:"sched",src:["VV3"]}]},
+  {id:"vivid4", trial:"VIVID", arm:"Aflibercept 2 mg every 4 weeks", drug:"Aflibercept 2 mg", s:"monthly",
+   regimen:"As VISTA.", pop:"As above.", note:"",
+   pts:[{t:1,va:10.5,inj:13,kind:"sched",src:["VV1"]},{t:2,va:11.4,inj:25,kind:"sched",src:["VV2"]},{t:3,va:10.3,inj:37,kind:"sched",src:["VV3"]}]},
+  {id:"trex-m", trial:"TREX-DME", arm:"Ranibizumab 0.3 mg monthly", drug:"Ranibizumab 0.3 mg", s:"monthly",
+   regimen:"Monthly for 2 years, then PRN for all arms in year 3.", pop:"150 eyes (30 in this arm); 73% completed 3 years.", note:"Small trial.",
+   pts:[{t:3,va:6.9,inj:null,kind:null,src:["TREX"],inote:"Mean 3.0 injections in year 3; earlier totals not in the abstract."}]},
+
+  {id:"vista8", trial:"VISTA", arm:"Aflibercept 2 mg every 8 weeks", drug:"Aflibercept 2 mg", s:"q8",
+   regimen:"Five monthly doses, then every 8 weeks with sham injections at interim visits.", pop:"As above.", note:"",
+   pts:[{t:1,va:10.7,inj:9,kind:"sched",src:["VV1"]},{t:2,va:11.1,inj:15,kind:"sched",src:["VV2"]},{t:3,va:10.5,inj:21,kind:"sched",src:["VV3"]}]},
+  {id:"vivid8", trial:"VIVID", arm:"Aflibercept 2 mg every 8 weeks", drug:"Aflibercept 2 mg", s:"q8",
+   regimen:"As VISTA.", pop:"As above.", note:"",
+   pts:[{t:1,va:10.7,inj:9,kind:"sched",src:["VV1"]},{t:2,va:9.4,inj:15,kind:"sched",src:["VV2"]},{t:3,va:11.7,inj:21,kind:"sched",src:["VV3"]}]},
+  {id:"yr-afl", trial:"YOSEMITE and RHINE", arm:"Aflibercept 2 mg every 8 weeks", drug:"Aflibercept 2 mg", s:"q8",
+   regimen:"Five monthly doses then every 8 weeks to week 100. In RHONE-X (years 3 and 4) these patients switched to faricimab treat-and-extend.",
+   pop:"1891 patients across the two trials (about 630 per arm).", note:"Comparator for faricimab.",
+   pts:[{t:1,va:10.9,inj:8.9,kind:"mean",sub:"YOSEMITE",src:["YR1","YR2"],vn:"Averaged over weeks 48, 52 and 56.",inote:"Derived: pooled 2-year mean injections minus the year-2 mean (13.4 minus 4.5); pooled across both trials."},
+        {t:1,va:10.3,inj:8.9,kind:"mean",sub:"RHINE",src:["YR1","YR2"],vn:"Averaged over weeks 48, 52 and 56.",inote:"Derived: pooled 2-year mean injections minus the year-2 mean (13.4 minus 4.5); pooled across both trials."},
+        {t:2,va:10.3,inj:14,kind:"med",sub:"pooled",src:["YR2"],vn:"Averaged over weeks 92 to 100.",inote:"Mean 13.4."},
+        {t:5,va:9.5,inj:null,kind:null,sub:"RHONE-X, 4 years",src:["RX"],vn:"At 4 years, after 2 years on faricimab treat-and-extend.",inote:"Median 8 further injections in RHONE-X years 3 and 4."}]},
+  {id:"yr-q8", trial:"YOSEMITE and RHINE", arm:"Faricimab 6 mg every 8 weeks", drug:"Faricimab 6 mg", s:"q8",
+   regimen:"Six monthly doses then every 8 weeks to week 100. Moved to treat-and-extend in RHONE-X.", pop:"As above.", note:"",
+   pts:[{t:1,va:10.7,inj:8.8,kind:"mean",sub:"YOSEMITE",src:["YR1","YR2"],vn:"Averaged over weeks 48, 52 and 56.",inote:"Derived: pooled 2-year mean injections minus the year-2 mean (13.5 minus 4.7); pooled across both trials."},
+        {t:1,va:11.8,inj:8.8,kind:"mean",sub:"RHINE",src:["YR1","YR2"],vn:"Averaged over weeks 48, 52 and 56.",inote:"Derived: pooled 2-year mean injections minus the year-2 mean (13.5 minus 4.7); pooled across both trials."},
+        {t:2,va:10.8,inj:15,kind:"med",sub:"pooled",src:["YR2"],vn:"Averaged over weeks 92 to 100.",inote:"Mean 13.5."},
+        {t:5,va:11.4,inj:null,kind:null,sub:"RHONE-X, 4 years",src:["RX"],vn:"At 4 years, after 2 years on faricimab treat-and-extend.",inote:"Median 8 further injections in RHONE-X years 3 and 4."}]},
+  {id:"ph-2", trial:"PHOTON", arm:"Aflibercept 2 mg every 8 weeks", drug:"Aflibercept 2 mg", s:"q8",
+   regimen:"Five monthly doses then every 8 weeks.", pop:"658 treated; vision 20/32 to 20/320.", note:"Comparator for aflibercept 8 mg.",
+   pts:[{t:1,va:9.2,inj:7.9,kind:"mean",src:["PH1","PHJ"],vn:"Week 48.",inote:"Mean injections to week 48 in the non-Japan subgroup (584 of 658 patients); the Japan subgroup figure was 8.0."},{t:2,va:8.4,inj:13.8,kind:"mean",src:["PH2"],vn:"Week 96."}]},
+  {id:"kk-afl", trial:"KESTREL and KITE", arm:"Aflibercept 2 mg every 8 weeks", drug:"Aflibercept 2 mg", s:"q8",
+   regimen:"Five monthly doses then every 8 weeks.", pop:"KESTREL 566 and KITE 360 patients.", note:"Comparator for brolucizumab.",
+   pts:[{t:1,va:10.5,inj:9,kind:"sched",sub:"KESTREL",src:["KK1"]},{t:1,va:9.4,inj:9,kind:"sched",sub:"KITE",src:["KK1"]},
+        {t:2,va:10.6,inj:15,kind:"sched",sub:"KESTREL",src:["KK2"]},{t:2,va:8.4,inj:15,kind:"sched",sub:"KITE",src:["KK2"]}]},
+
+  {id:"ret-te", trial:"RETAIN", arm:"Ranibizumab 0.5 mg treat-and-extend", drug:"Ranibizumab 0.5 mg", s:"te",
+   regimen:"Monthly until vision stable, then intervals extended or shortened by investigator judgement of activity.", pop:"372 patients randomised 1:1:1.",
+   note:"46% fewer clinic visits than PRN; over 70% kept intervals of 2 months or more.",
+   pts:[{t:1,va:6.8,inj:7,kind:"med",src:["RET"],vn:"Change at month 12. The primary outcome, the average over months 1 to 12, was +6.1."},{t:2,va:6.5,inj:12.8,kind:"mean",src:["RET"],inote:"Median 12. Mean 8.9 visits scheduled for treatment after stabilisation."}]},
+  {id:"ret-tel", trial:"RETAIN", arm:"Ranibizumab 0.5 mg treat-and-extend + laser", drug:"Ranibizumab 0.5 mg", s:"te",
+   regimen:"As above, with laser at investigator discretion.", pop:"As above.", note:"",
+   pts:[{t:1,va:6.8,inj:7,kind:"med",src:["RET"],vn:"Change at month 12. The primary outcome, the average over months 1 to 12, was +5.9."},{t:2,va:8.3,inj:12.4,kind:"mean",src:["RET"],inote:"Median 12. Mean 9.0 visits scheduled for treatment after stabilisation."}]},
+  {id:"trex-te", trial:"TREX-DME", arm:"Ranibizumab 0.3 mg treat-and-extend", drug:"Ranibizumab 0.3 mg", s:"te",
+   regimen:"Treat-and-extend for 2 years without macular laser, then PRN in year 3.", pop:"150 eyes (60 in this arm).", note:"Small trial.",
+   pts:[{t:3,va:9.7,inj:null,kind:null,src:["TREX"],inote:"Mean 3.1 injections in year 3; earlier totals not in the abstract."}]},
+  {id:"yr-pti", trial:"YOSEMITE and RHINE", arm:"Faricimab 6 mg personalised interval", drug:"Faricimab 6 mg", s:"te",
+   regimen:"Four monthly doses, then intervals from 4 to 16 weeks by protocol criteria on vision and central thickness. Continued as treat-and-extend in RHONE-X.",
+   pop:"As above.", note:"78% on 12-weekly or longer at week 96.",
+   pts:[{t:1,va:11.6,inj:8.3,kind:"mean",sub:"YOSEMITE",src:["YR1","YR2"],vn:"Averaged over weeks 48, 52 and 56.",inote:"Derived: pooled 2-year mean injections minus the year-2 mean (11.8 minus 3.5); pooled across both trials."},
+        {t:1,va:10.8,inj:8.3,kind:"mean",sub:"RHINE",src:["YR1","YR2"],vn:"Averaged over weeks 48, 52 and 56.",inote:"Derived: pooled 2-year mean injections minus the year-2 mean (11.8 minus 3.5); pooled across both trials."},
+        {t:2,va:10.4,inj:11,kind:"med",sub:"pooled",src:["YR2"],vn:"Averaged over weeks 92 to 100.",inote:"Mean 11.8; median 3 in year 2."},
+        {t:5,va:10.1,inj:null,kind:null,sub:"RHONE-X, 4 years",src:["RX"],vn:"At 4 years.",inote:"Median 7 further injections in RHONE-X years 3 and 4; about 80% on 12-weekly or longer at the end."}]},
+
+  {id:"ph-12", trial:"PHOTON", arm:"Aflibercept 8 mg every 12 weeks", drug:"Aflibercept 8 mg", s:"ext",
+   regimen:"Three monthly doses, then every 12 weeks; interval shortened from week 16 if activity criteria met. 88% kept 12-weekly or longer through week 96.",
+   pop:"As above.", note:"",
+   pts:[{t:1,va:8.8,inj:5.9,kind:"mean",src:["PH1","PHJ"],vn:"Week 48.",inote:"Mean injections to week 48 in the non-Japan subgroup (584 of 658 patients); the Japan subgroup figure was 6.1."},{t:2,va:8.8,inj:9.5,kind:"mean",src:["PH2"],vn:"Week 96."}]},
+  {id:"ph-16", trial:"PHOTON", arm:"Aflibercept 8 mg every 16 weeks", drug:"Aflibercept 8 mg", s:"ext",
+   regimen:"Three monthly doses, then every 16 weeks; shortened if activity criteria met. 83% kept 16-weekly or longer through week 96.",
+   pop:"As above.", note:"",
+   pts:[{t:1,va:7.9,inj:5.0,kind:"mean",src:["PH1","PHJ"],vn:"Week 48.",inote:"Mean injections to week 48 in the non-Japan subgroup (584 of 658 patients); the Japan subgroup figure was 5.0."},{t:2,va:7.5,inj:7.8,kind:"mean",src:["PH2"],vn:"Week 96."}]},
+  {id:"kk-bro", trial:"KESTREL and KITE", arm:"Brolucizumab 6 mg every 12 weeks", drug:"Brolucizumab 6 mg", s:"ext",
+   regimen:"Five doses every 6 weeks, then every 12 weeks, adjusted to every 8 weeks if active. In KITE, intervals could extend to 16 weeks from week 72.",
+   pop:"As above.", note:"Intraocular inflammation 4.2% (KESTREL) and 2.2% (KITE).",
+   pts:[{t:1,va:9.2,inj:null,kind:null,sub:"KESTREL",src:["KK1"],inote:"Year-1 injection count not available from PubMed sources."},{t:1,va:10.6,inj:null,kind:null,sub:"KITE",src:["KK1"],inote:"Year-1 injection count not available from PubMed sources."},
+        {t:2,va:8.8,inj:10.7,kind:"mean",sub:"KESTREL",src:["KK2","NMA"],inote:"Mean across KESTREL and KITE estimated by a published meta-analysis of the trial data; trial-level counts are not in the abstracts."},{t:2,va:10.9,inj:10.7,kind:"mean",sub:"KITE",src:["KK2","NMA"],inote:"Mean across KESTREL and KITE estimated by a published meta-analysis of the trial data; trial-level counts are not in the abstracts."}]}
+];
+
+const TIMES = [{t:1,l:"1 year"},{t:2,l:"2 years"},{t:3,l:"3 years"},{t:5,l:"4–5 years"}];
+const state = {view:"scatter", t:1, on:new Set(STRATS.map(s=>s.k)), sel:null, showNC:false, dsel:new Set(), ssel:new Set()};
+try{ const v = localStorage.getItem("dmo-reg-view"); if(v==="lines"||v==="scatter") state.view=v; const t=+localStorage.getItem("dmo-reg-t"); if([1,2,3,5].includes(t)) state.t=t; }catch(e){}
+
+const NS="http://www.w3.org/2000/svg";
+function el(tag, attrs={}, parent){ const n=document.createElementNS(NS,tag); for(const k in attrs) n.setAttribute(k,attrs[k]); if(parent) parent.appendChild(n); return n; }
+function shapePath(shape, r){
+  switch(shape){
+    case "circle": return `M ${-r} 0 A ${r} ${r} 0 1 0 ${r} 0 A ${r} ${r} 0 1 0 ${-r} 0 Z`;
+    case "square": {const a=r*.88; return `M ${-a} ${-a} H ${a} V ${a} H ${-a} Z`;}
+    case "triangle": return `M 0 ${-r*1.15} L ${r*1.05} ${r*.75} L ${-r*1.05} ${r*.75} Z`;
+    case "tri-down": return `M 0 ${r*1.15} L ${r*1.05} ${-r*.75} L ${-r*1.05} ${-r*.75} Z`;
+    case "diamond": return `M 0 ${-r*1.2} L ${r*1.05} 0 L 0 ${r*1.2} L ${-r*1.05} 0 Z`;
+    case "square-rot": {const a=r*.95,b=r*.35; return `M ${-a} ${-b} H ${-b} V ${-a} H ${b} V ${-b} H ${a} V ${b} H ${b} V ${a} H ${-b} V ${b} H ${-a} Z`;}
+  }
+}
+const isDRCR = a => a.s==="prn";
+const DRUGS=[{k:"ran",n:"Ranibizumab"},{k:"afl2",n:"Aflibercept 2 mg"},{k:"afl8",n:"Aflibercept 8 mg"},{k:"bev",n:"Bevacizumab"},{k:"far",n:"Faricimab"},{k:"bro",n:"Brolucizumab"},{k:"mix",n:"Switched or mixed"}];
+const drugKey=a=>{const d=a.drug; if(/^Ranibizumab/.test(d))return"ran"; if(d==="Aflibercept 2 mg")return"afl2"; if(d==="Aflibercept 8 mg")return"afl8"; if(/^Bevacizumab 1/.test(d))return"bev"; if(/^Faricimab/.test(d))return"far"; if(/^Brolucizumab/.test(d))return"bro"; return"mix";};
+const dcol=a=>`var(--d-${drugKey(a)})`;
+const dOK=k=>!state.dsel.size||state.dsel.has(k), sOK=k=>!state.ssel.size||state.ssel.has(k);
+const shown=a=>sOK(a.s)&&dOK(drugKey(a));
+function iconSVG(shape, filled=true, size=14){
+  const s=document.createElementNS(NS,"svg"); s.setAttribute("width",size); s.setAttribute("height",size); s.setAttribute("viewBox","-8 -8 16 16"); s.setAttribute("aria-hidden","true");
+  el("path",{d:shapePath(shape,5.6),fill:filled?"var(--ink)":"var(--surface)",stroke:"var(--ink)","stroke-width":1.4},s);
+  return s;
+}
+const fmtVA = v => v==null ? "—" : (v>0?"+":"")+(Number.isInteger(v)?v:v.toFixed(1));
+const kindLabel = k => ({med:"median",mean:"mean",sched:"scheduled"})[k]||"";
+
+/* Strategy key */
+const stratsEl=document.getElementById("strats");
+STRATS.forEach(s=>{
+  const d=document.createElement("div"); d.className="strat";
+  const hd=document.createElement("div"); hd.className="hd"; hd.appendChild(iconSVG(s.shape)); const h=document.createElement("h3"); h.textContent=s.name; h.style.margin=0; hd.appendChild(h);
+  d.appendChild(hd);
+  const p=document.createElement("p"); p.textContent=s.text; d.appendChild(p);
+  const w=document.createElement("div"); w.className="who"; w.textContent=s.who; d.appendChild(w);
+  stratsEl.appendChild(d);
+});
+
+/* Controls */
+const timeSeg=document.getElementById("timeSeg");
+TIMES.forEach(T=>{ const b=document.createElement("button"); b.type="button"; b.id="t-"+T.t; b.textContent=T.l; b.dataset.t=T.t; b.onclick=()=>{state.t=T.t; save(); render();}; timeSeg.appendChild(b); });
+document.querySelectorAll("#viewSeg button").forEach(b=>b.onclick=()=>{state.view=b.dataset.v; save(); render();});
+const chips=document.getElementById("chips");
+STRATS.forEach(s=>{ const b=document.createElement("button"); b.type="button"; b.className="chip"; b.id="chip-"+s.k; b.appendChild(iconSVG(s.shape,true,12)); b.appendChild(document.createTextNode(s.name));
+  b.onclick=()=>{ if(state.ssel.has(s.k)) state.ssel.delete(s.k); else state.ssel.add(s.k); render(); }; chips.appendChild(b); });
+{ const b=document.createElement("button"); b.type="button"; b.className="chip reset"; b.id="strat-all"; b.textContent="Show all strategies"; b.onclick=()=>{ state.ssel.clear(); render(); }; chips.appendChild(b); }
+document.getElementById("ncToggle").onclick=()=>{ state.showNC=!state.showNC; render(); };
+const drugChips=document.getElementById("drugChips");
+DRUGS.forEach(d=>{ const b=document.createElement("button"); b.type="button"; b.className="chip"; b.id="drug-"+d.k;
+  b.innerHTML=`<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--d-${d.k})"/></svg>${d.n}`;
+  b.onclick=()=>{ if(state.dsel.has(d.k)) state.dsel.delete(d.k); else state.dsel.add(d.k); render(); }; drugChips.appendChild(b); });
+{ const b=document.createElement("button"); b.type="button"; b.className="chip reset"; b.id="drug-all"; b.textContent="Show all drugs"; b.onclick=()=>{ state.dsel.clear(); render(); }; drugChips.appendChild(b); }
+function save(){ try{ localStorage.setItem("dmo-reg-view",state.view); localStorage.setItem("dmo-reg-t",state.t);}catch(e){} }
+
+/* Chart */
+const svg=document.getElementById("chart"), tip=document.getElementById("tip"), box=document.getElementById("chartbox");
+const W=900,H=460,M={l:62,r:24,t:18,b:52};
+function showTip(evt, html){ tip.innerHTML=html; tip.hidden=false; const r=box.getBoundingClientRect(); let x=evt.clientX-r.left+box.scrollLeft+14, y=evt.clientY-r.top+12; const tw=tip.offsetWidth; if(x+tw>box.scrollLeft+box.clientWidth-6) x=evt.clientX-r.left+box.scrollLeft-tw-14; tip.style.left=x+"px"; tip.style.top=y+"px"; }
+function hideTip(){ tip.hidden=true; }
+function tipHTML(a,p){
+  const tl=TIMES.find(T=>T.t===p.t).l;
+  return `<b>${a.trial}${p.sub?" ("+p.sub+")":""}</b><br>${a.arm}<br>${tl}: ${p.va==null?"vision change not reported":fmtVA(p.va)+" letters"}${p.inj!=null?`<br>${p.inj} injections (${kindLabel(p.kind)})`:""}`;
+}
+function markerFor(a,p,x,y,g){
+  const s=SK[a.s]; const filled = p.kind!=="sched";
+  const grp=el("g",{class:"mk",transform:`translate(${x},${y})`,tabindex:0,role:"button","aria-label":`${a.trial} ${a.arm}, ${fmtVA(p.va)} letters`},g);
+  const dim = state.sel && state.sel!==a.id;
+  const col = dcol(a);
+  el("path",{class:"shape",d:shapePath(s.shape, state.sel===a.id?7.5:6.2),fill:filled?col:"var(--surface)",stroke:col,"stroke-width":1.6,opacity:dim?.25:1},grp);
+  grp.addEventListener("mousemove",e=>showTip(e,tipHTML(a,p)));
+  grp.addEventListener("mouseleave",hideTip);
+  grp.addEventListener("click",()=>select(a.id));
+  grp.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(a.id);} });
+  return grp;
+}
+function axes(xTicks, xLab, yMin, yMax, xScale, yScale, xLabels){
+  for(let v=yMin; v<=yMax; v+=2){
+    const y=yScale(v);
+    el("line",{x1:M.l,x2:W-M.r,y1:y,y2:y,stroke:v===yMin?"var(--p1)":"var(--grid)","stroke-width":1},svg);
+    const t=el("text",{x:M.l-8,y:y+3.5,"text-anchor":"end",class:"tick"},svg); t.textContent=(v>0?"+":"")+v;
+  }
+  xTicks.forEach((v,i)=>{ const x=xScale(v); el("line",{x1:x,x2:x,y1:M.t,y2:H-M.b,stroke:"var(--grid)","stroke-width":1},svg);
+    const t=el("text",{x,y:H-M.b+18,"text-anchor":"middle",class:"tick"},svg); t.textContent=xLabels?xLabels[i]:v; });
+  const xl=el("text",{x:(M.l+W-M.r)/2,y:H-10,"text-anchor":"middle",class:"axis-label"},svg); xl.textContent=xLab;
+  const yl=el("text",{x:16,y:(M.t+H-M.b)/2,"text-anchor":"middle",class:"axis-label",transform:`rotate(-90 16 ${(M.t+H-M.b)/2})`},svg); yl.textContent="Mean change in visual acuity (ETDRS letters)";
+}
+function renderScatter(){
+  const injs=ARMS.filter(shown).flatMap(a=>a.pts.filter(p=>p.t===state.t&&p.inj!=null).map(p=>p.inj));
+  const xMax=Math.max(15,Math.ceil((Math.max(0,...injs)+1)/5)*5);
+  const yMin=4,yMax=16, lane=state.showNC?70:0;
+  const x0=M.l+lane;
+  const xScale=v=>x0+(v/xMax)*(W-M.r-x0), yScale=v=>M.t+(1-(v-yMin)/(yMax-yMin))*(H-M.t-M.b);
+  // lane for points without injection count
+  if(lane){ el("rect",{x:M.l,y:M.t,width:lane-12,height:H-M.t-M.b,fill:"var(--surface-2)"},svg); }
+  axes(Array.from({length:xMax/5+1},(_,i)=>i*5),"Injections from baseline to this time point",yMin,yMax,xScale,yScale);
+  if(lane){ const ll=el("text",{x:M.l+(lane-12)/2,y:H-M.b+18,"text-anchor":"middle",class:"tick"},svg); ll.textContent="no count"; }
+  const g=el("g",{},svg);
+  const pts=[]; let hidden=0, nc=0;
+  ARMS.forEach(a=>{ if(!shown(a)) return; a.pts.filter(p=>p.t===state.t).forEach(p=>{ if(p.va==null){hidden++;return;} if(p.inj==null){ nc++; if(!state.showNC) return; } pts.push([a,p]); }); });
+  const nt=document.getElementById("ncToggle"); nt.hidden=false; nt.textContent=(state.showNC?"Hide":"Show")+` results without an injection count (${nc})`; nt.setAttribute("aria-pressed",state.showNC); nt.disabled=!nc && !state.showNC;
+  // jitter lane points horizontally
+  const laneCount={};
+  pts.forEach(([a,p])=>{
+    let x;
+    if(p.inj==null){ const key=Math.round(p.va*2); laneCount[key]=(laneCount[key]||0)+1; x=M.l+10+((laneCount[key]-1)%4)*11; }
+    else x=xScale(p.inj);
+    markerFor(a,p,x,yScale(p.va),g);
+  });
+  // DRCR labels for clarity
+  const n=pts.length;
+  document.getElementById("chart-sub").textContent=`${TIMES.find(T=>T.t===state.t).l} · ${n} result${n===1?"":"s"} shown`;
+  let note = state.showNC ? "Marks in the grey lane have a vision result but no injection total in the source. " : (nc ? `${nc} result${nc===1?"":"s"} without an injection count ${nc===1?"is":"are"} hidden; they remain in the table. ` : "");
+  if(hidden) note+=`${hidden} result${hidden===1?"":"s"} at this time point ${hidden===1?"has":"have"} an injection count but no absolute vision change, and appear only in the table. `;
+  if(state.t===5) note+="This column mixes 4-year (RHONE-X) and 5-year (Protocol I, Protocol T extension) results. ";
+  if(state.t===1) note+="The RESTORE 1-year value is an average over months 1 to 12, which runs lower than a month-12 value. Faricimab and its comparator have year-1 counts derived from pooled 2-year and year-2 means. ";
+  document.getElementById("chartNote").textContent=note;
+}
+function renderLines(){
+  const yMin=4,yMax=16;
+  const xs={1:0,2:1,3:2,5:3};
+  const xScale=i=>M.l+30+i*((W-M.r-M.l-60)/3), yScale=v=>M.t+(1-(v-yMin)/(yMax-yMin))*(H-M.t-M.b);
+  axes([0,1,2,3],"Time from start of treatment",yMin,yMax,xScale,yScale,TIMES.map(T=>T.l));
+  const g=el("g",{},svg);
+  let n=0;
+  ARMS.forEach(a=>{
+    if(!shown(a)) return;
+    const bySub={};
+    a.pts.forEach(p=>{ if(p.va==null) return; const k=(p.sub==="YOSEMITE"||p.sub==="RHINE"||p.sub==="KESTREL"||p.sub==="KITE")?p.sub:"main"; (bySub[k]=bySub[k]||[]).push(p); });
+    // join pooled/main series; for trials split at 1y only (YOSEMITE/RHINE), connect each to pooled 2y
+    const main=(bySub.main||[]).sort((p,q)=>p.t-q.t);
+    const series=[];
+    if(bySub.YOSEMITE||bySub.RHINE){ ["YOSEMITE","RHINE"].forEach(k=>{ if(bySub[k]) series.push([...bySub[k],...main]); }); }
+    else if(bySub.KESTREL||bySub.KITE){ ["KESTREL","KITE"].forEach(k=>{ if(bySub[k]) series.push(bySub[k].sort((p,q)=>p.t-q.t)); }); }
+    else series.push(main);
+    const dim = state.sel && state.sel!==a.id;
+    const col = dcol(a);
+    series.forEach(sr=>{
+      if(sr.length>1){ const d=sr.map((p,i)=>(i?"L":"M")+xScale(xs[p.t])+" "+yScale(p.va)).join(" ");
+        el("path",{d,fill:"none",stroke:col,"stroke-width":state.sel===a.id?2.4:1.3,opacity:dim?.15:(isDRCR(a)?.9:.6),"stroke-dasharray":isDRCR(a)?"":"4 3"},g); }
+    });
+    a.pts.forEach(p=>{ if(p.va==null) return; n++; markerFor(a,p,xScale(xs[p.t]),yScale(p.va),g); });
+  });
+  document.getElementById("chart-sub").textContent=`${n} results shown`;
+  document.getElementById("chartNote").textContent="Faricimab and its aflibercept comparator join the separate YOSEMITE and RHINE 1-year values to the pooled 2-year value. Their 4-year values come from RHONE-X, where all patients were on faricimab treat-and-extend. The last column mixes 4-year and 5-year results.";
+}
+function render(){
+  svg.textContent=""; hideTip();
+  document.querySelectorAll("#viewSeg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===state.view));
+  document.querySelectorAll("#timeSeg button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.t===state.t));
+  document.getElementById("timeCtl").hidden = state.view!=="scatter";
+  STRATS.forEach(s=>document.getElementById("chip-"+s.k).setAttribute("aria-pressed",state.ssel.has(s.k)));
+  DRUGS.forEach(d=>document.getElementById("drug-"+d.k).setAttribute("aria-pressed",state.dsel.has(d.k)));
+  document.getElementById("drugChips").classList.toggle("some",state.dsel.size>0);
+  document.getElementById("chips").classList.toggle("some",state.ssel.size>0);
+  document.getElementById("drug-all").hidden = !state.dsel.size;
+  document.getElementById("strat-all").hidden = !state.ssel.size;
+  document.getElementById("h-chart").textContent = state.view==="scatter" ? "Vision gained against injections given" : "Vision gained over time";
+  document.getElementById("ncToggle").hidden = state.view!=="scatter";
+  if(state.view==="scatter") renderScatter(); else renderLines();
+  renderLegend(); renderDetail(); markRows();
+}
+function renderLegend(){
+  const L=document.getElementById("legend"); L.textContent="";
+  const add=(svgEl,txt)=>{ const s=document.createElement("span"); s.appendChild(svgEl); s.appendChild(document.createTextNode(txt)); L.appendChild(s); };
+  if(state.view==="scatter"){ const h=document.createElementNS(NS,"svg"); h.setAttribute("width",14); h.setAttribute("height",14); h.setAttribute("viewBox","-8 -8 16 16"); el("path",{d:shapePath("triangle",5.6),fill:"var(--surface)",stroke:"var(--ink)","stroke-width":1.6},h); add(h,"Hollow: injection count scheduled by protocol, not observed"); }
+  const s=document.createElement("span"); s.textContent=state.view==="lines"?"Colour marks the drug and shape the strategy. Solid lines are DRCR arms; dashed lines are other trials.":"Colour marks the drug and shape the strategy. Select one or more drugs or strategies above to show only those."; L.appendChild(s);
+}
+
+/* Detail */
+function srcLinks(keys){ return keys.map(k=>`<sup><a href="#src-${k}" title="${S[k].c.replace(/"/g,"&quot;")}">${srcNum(k)}</a></sup>`).join(""); }
+function select(id){ state.sel = state.sel===id ? null : id; render(); if(state.sel){ const r=document.getElementById("row-"+id); } }
+function renderDetail(){
+  const D=document.getElementById("detail");
+  if(!state.sel){ D.innerHTML='<div class="placeholder">Select a mark or a table row to see the regimen, the trial population and the sources.</div>'; return; }
+  const a=ARMS.find(x=>x.id===state.sel); const s=SK[a.s];
+  const rows=a.pts.map(p=>{ const tl=TIMES.find(T=>T.t===p.t).l; return `<dt>${tl}${p.sub?" · "+p.sub:""}</dt><dd>${p.va==null?'<span class="na">not reported</span>':fmtVA(p.va)+" letters"}${p.inj!=null?` · ${p.inj} injections (${kindLabel(p.kind)})`:""}${srcLinks(p.src)}${p.vn?`<br><span class="na">${p.vn}</span>`:""}${p.inote?`<br><span class="na">${p.inote}</span>`:""}</dd>`; }).join("");
+  D.innerHTML=`<div><div class="eyebrow">${s.name}</div><h3 style="margin-top:6px">${a.trial}: ${a.arm}</h3><p class="regimen">${a.regimen}</p><p class="regimen">${a.pop}</p>${a.note?`<p class="regimen">${a.note}</p>`:""}<p style="margin-top:8px"><button type="button" class="chip" id="clearSel">Clear selection</button></p></div><dl class="dl">${rows}</dl>`;
+  document.getElementById("clearSel").onclick=()=>select(a.id);
+}
+
+/* Table */
+function cell(a,t){
+  const ps=a.pts.filter(p=>p.t===t); if(!ps.length) return '<td class="num na">—</td>';
+  return '<td class="num">'+ps.map(p=>`<div>${p.sub&&p.sub!=="pooled"?`<span class="arm-sub">${p.sub}</span>`:""}<span class="va">${p.va==null?'<span class="na">n/r</span>':fmtVA(p.va)}</span>${srcLinks(p.src)}${p.inj!=null?`<span class="inj ${p.kind==="sched"?"sched":""}">${p.inj} inj · ${kindLabel(p.kind)}</span>`:""}</div>`).join('<div style="height:6px"></div>')+'</td>';
+}
+const tb=document.querySelector("#tbl tbody");
+let collapsed=new Set(); try{ collapsed=new Set(JSON.parse(localStorage.getItem("dmo-reg-collapsed")||"[]")); }catch(e){}
+function applyRows(){ document.querySelectorAll("tr.arm").forEach(r=>r.hidden = collapsed.has(r.dataset.grp) || !dOK(r.dataset.drug) || !sOK(r.dataset.grp));
+  document.querySelectorAll("tr.grp").forEach(g=>{ const k=g.querySelector("button").id.slice(4); g.hidden = !sOK(k) || ![...document.querySelectorAll(`tr.arm[data-grp="${k}"]`)].some(r=>dOK(r.dataset.drug)); }); }
+function setGroup(k, open){
+  if(open) collapsed.delete(k); else collapsed.add(k);
+  const b=document.getElementById("grp-"+k); if(b) b.setAttribute("aria-expanded", open);
+  applyRows();
+  try{ localStorage.setItem("dmo-reg-collapsed", JSON.stringify([...collapsed])); }catch(e){}
+}
+STRATS.forEach(s=>{
+  const arms=ARMS.filter(a=>a.s===s.k); if(!arms.length) return;
+  const g=document.createElement("tr"); g.className="grp";
+  g.innerHTML=`<td colspan="7"><button type="button" class="grp-btn" id="grp-${s.k}" aria-expanded="true"><span class="caret" aria-hidden="true">▾</span>${s.name}<span class="cnt">${arms.length} arm${arms.length===1?"":"s"}</span></button></td>`;
+  g.querySelector("button").onclick=()=>setGroup(s.k, collapsed.has(s.k)); tb.appendChild(g);
+  arms.forEach(a=>{
+    const tr=document.createElement("tr"); tr.className="arm"; tr.id="row-"+a.id; tr.tabIndex=0; tr.dataset.grp=s.k; tr.dataset.drug=drugKey(a);
+    const notes=a.pts.map(p=>[p.vn,p.inote].filter(Boolean).join(" ")).filter(Boolean);
+    tr.innerHTML=`<td><span class="arm-name">${a.trial}</span><span class="arm-sub">${a.arm}</span></td><td><span style="display:inline-block;width:9px;height:9px;background:var(--d-${drugKey(a)});margin-right:6px;vertical-align:0"></span>${a.drug}</td>${[1,2,3,5].map(t=>cell(a,t)).join("")}<td class="na" style="font-size:.78rem">${[a.note,...new Set(notes)].filter(Boolean).join(" ")}</td>`;
+    tr.addEventListener("click",e=>{ if(e.target.closest("a")) return; select(a.id); document.getElementById("chartbox").scrollIntoView({behavior:"smooth",block:"center"}); });
+    tr.addEventListener("keydown",e=>{ if(e.key==="Enter"){ select(a.id); } });
+    tb.appendChild(tr);
+  });
+});
+function markRows(){
+  document.querySelectorAll("tr.arm").forEach(r=>r.classList.toggle("sel", r.id==="row-"+state.sel));
+  applyRows();
+  const r=state.sel && document.getElementById("row-"+state.sel); if(r && r.hidden && collapsed.has(r.dataset.grp)) setGroup(r.dataset.grp, true);
+}
+STRATS.forEach(s=>{ if(collapsed.has(s.k)) setGroup(s.k,false); });
+document.getElementById("expandAll").onclick=()=>STRATS.forEach(s=>setGroup(s.k,true));
+document.getElementById("collapseAll").onclick=()=>STRATS.forEach(s=>setGroup(s.k,false));
+
+/* Sources */
+const ol=document.getElementById("srcList");
+SRC_ORDER.forEach(k=>{ const s=S[k]; const li=document.createElement("li"); li.id="src-"+k;
+  li.innerHTML=`<a href="https://pubmed.ncbi.nlm.nih.gov/${s.p}/" target="_blank" rel="noopener">${s.c}</a>. PubMed ${s.p}. <a href="https://doi.org/${s.d}" target="_blank" rel="noopener">doi:${s.d}</a>`; ol.appendChild(li); });
+document.querySelectorAll('a[href="#src-VIO"]').forEach(a=>a.textContent=srcNum("VIO"));
+
+render();
+</script>
+
+</body>
+</html>
