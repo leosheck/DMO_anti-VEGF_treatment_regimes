@@ -8,6 +8,7 @@ An interactive comparison of anti-VEGF dosing strategies for diabetic macular oe
 
 - Mean change in best-corrected visual acuity (ETDRS letters) against the number of injections given, at 1 year, 2 years, 3 years and 4 to 5 years.
 - Vision change over time for each trial arm.
+- A step-by-step description of the DRCR.net retreatment algorithm as used in Protocols I, T and AC.
 - A table of every trial arm and time point, grouped by dosing strategy, with a source for every figure.
 - Filters by drug and by dosing strategy.
 

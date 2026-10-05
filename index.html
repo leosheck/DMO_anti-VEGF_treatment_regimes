@@ -136,6 +136,10 @@ ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px;f
 .mini{border-collapse:collapse;width:100%;font-size:.84rem;min-width:0}
 .mini th,.mini td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
 .mini td{font-variant-numeric:tabular-nums}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:st;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0;padding:1px 0 0 1px}
+ol.steps li{counter-increment:st;background:var(--surface);padding:14px 16px;border:1px solid var(--line);margin:-1px 0 0 -1px}
+ol.steps li::before{content:counter(st,decimal-leading-zero);display:block;font:400 .72rem/1 var(--f-mono);color:var(--muted);margin-bottom:8px;letter-spacing:.08em}
+ol.steps p{margin:0;font-size:.86rem;color:var(--muted)}
 ol.src{margin:0;padding-left:22px;font-size:.8rem;color:var(--muted);columns:320px 2;column-gap:40px}
 ol.src li{padding-left:2px;margin-bottom:5px;break-inside:avoid}
 ol.src a{color:var(--ink)}
@@ -183,6 +187,21 @@ footer{font-size:.76rem;color:var(--muted);border-top:1px solid var(--line);padd
   <section aria-labelledby="h-strat">
     <h2 id="h-strat">Six dosing strategies</h2>
     <div class="strats" id="strats"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-algo">
+    <h2 id="h-algo">How the DRCR.net algorithm works</h2>
+    <p class="note" style="color:var(--ink)">The DRCR Retina Network used one retreatment algorithm, with small changes between protocols, in Protocols I, T and AC. At every visit a web-based system applied the rules to the vision and OCT measurements entered by the site and told the investigator whether to inject, whether to add laser, and when the next visit was due.<sup><a href="#src-I10">I10</a></sup></p>
+    <ol class="steps">
+      <li><h3>Start</h3><p>Injection at baseline, then every 4 weeks. Protocol I gave injections every 4 weeks through week 12.<sup><a href="#src-I10">I10</a></sup> Protocol AC gave six monthly injections unless the eye met the success rule from month 4.<sup><a href="#src-AC">AC</a></sup></p></li>
+      <li><h3>Success</h3><p>No injection is required when the eye has reached the success rule. Protocols T and AC: vision 20/20 or better and central subfield thickness below the eligibility threshold.<sup><a href="#src-T15">T15</a>, <a href="#src-AC">AC</a></sup> Protocol I, from week 16: vision 20/20 or better or central subfield thickness below 250 µm.<sup><a href="#src-I10">I10</a></sup></p></li>
+      <li><h3>Stability, from week 24</h3><p>The injection is withheld if there has been no improvement and no worsening after two consecutive injections, whatever the vision and thickness.<sup><a href="#src-T15">T15</a>, <a href="#src-AC">AC</a></sup> In Protocol I, treatment at such a visit was at the investigator's discretion.<sup><a href="#src-I10">I10</a></sup></p></li>
+      <li><h3>Restart</h3><p>Injections restart when vision or central subfield thickness worsens.<sup><a href="#src-T15">T15</a>, <a href="#src-AC">AC</a></sup></p></li>
+      <li><h3>Laser</h3><p>Protocol T added focal or grid laser at or after week 24 for persistent oedema that was not improving.<sup><a href="#src-T15">T15</a></sup> Protocol I compared laser at the start (prompt) with laser from week 24 onward (deferred).<sup><a href="#src-I11">I11</a></sup></p></li>
+      <li><h3>Visit interval</h3><p>Visits every 4 weeks in year 1. After that, the interval was extended up to every 16 weeks when vision and thickness were stable and injections were deferred.<sup><a href="#src-T16">T16</a>, <a href="#src-AC">AC</a></sup></p></li>
+      <li><h3>Switching, Protocol AC only</h3><p>From week 12, bevacizumab-first eyes switched to aflibercept 2 mg if oedema persisted, both previous visits had an injection, there was no recent improvement, and vision was 20/50 or worse before week 24 or 20/32 or worse from week 24.<sup><a href="#src-AC">AC</a></sup></p></li>
+      <li><h3>Definitions</h3><p>Improvement: a gain of 5 or more letters, or a decrease of 10% or more in central subfield thickness. Worsening: a loss of 5 or more letters, or an increase of 10% or more in central subfield thickness.<sup><a href="#src-T15">T15</a></sup></p></li>
+    </ol>
   </section>
 
   <section aria-labelledby="h-table">
@@ -642,7 +661,7 @@ document.getElementById("collapseAll").onclick=()=>STRATS.forEach(s=>setGroup(s.
 const ol=document.getElementById("srcList");
 SRC_ORDER.forEach(k=>{ const s=S[k]; const li=document.createElement("li"); li.id="src-"+k;
   li.innerHTML=`<a href="https://pubmed.ncbi.nlm.nih.gov/${s.p}/" target="_blank" rel="noopener">${s.c}</a>. PubMed ${s.p}. <a href="https://doi.org/${s.d}" target="_blank" rel="noopener">doi:${s.d}</a>`; ol.appendChild(li); });
-document.querySelectorAll('a[href="#src-VIO"]').forEach(a=>a.textContent=srcNum("VIO"));
+document.querySelectorAll('section a[href^="#src-"]').forEach(a=>{ const k=a.getAttribute("href").slice(5); if(S[k]){ a.textContent=srcNum(k); a.title=S[k].c; } });
 
 render();
 </script>
