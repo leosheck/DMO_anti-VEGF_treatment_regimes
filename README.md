@@ -8,7 +8,7 @@ An interactive comparison of anti-VEGF dosing strategies for diabetic macular oe
 
 - Mean change in best-corrected visual acuity (ETDRS letters) against the number of injections given, at 1 year, 2 years, 3 years and 4 to 5 years.
 - Vision change over time for each trial arm.
-- A step-by-step description of the DRCR.net retreatment algorithm as used in Protocols I, T and AC.
+- A summary of the DRCR.net retreatment rules, taken from the Protocol T study slide set.
 - A table of every trial arm and time point, grouped by dosing strategy, with a source for every figure.
 - Filters by drug and by dosing strategy.
 
@@ -25,7 +25,7 @@ VIOLET, which compared maintenance strategies after the first year of treatment,
 
 ## Sources and limits
 
-- All figures come from articles indexed in PubMed, using the abstract or the open-access full text. Each figure links to its source on the page.
+- All trial figures come from articles indexed in PubMed, using the abstract or the open-access full text. Each figure links to its source on the page.
 - Injection counts are reported differently across trials. DRCR papers give medians and industry papers give means. For VIVID, VISTA, RISE and RIDE, the counts are the numbers the protocol scheduled, not the numbers patients received.
 - Some year-1 injection counts are derived values. These are marked on the page.
 - The trials took patients with different starting vision. Comparisons between trials are descriptive and are not adjusted for these differences.
